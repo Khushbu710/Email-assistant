@@ -9,106 +9,164 @@ st.set_page_config(
     layout="wide"
 )
 
-# --- CUSTOM CSS FOR PROFESSIONAL STYLING (AURORA THEME) ---
+# --- CUSTOM CSS FOR PROFESSIONAL STYLING (Aurora Modern Flexbox Theme) ---
 st.markdown("""
 <style>
     /* Main Background & Font */
-    body {
-        background: linear-gradient(to right, #f0f2f6, #e6e9f0);
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    html, body, .reportview-container {
+        background: radial-gradient(circle at 20% 40%, #e8eaf6 0%, #f0f4c3 100%);
+        font-family: 'Inter', 'Segoe UI', 'Tahoma', 'Geneva', 'Verdana', sans-serif;
     }
 
-    /* Main content area */
     .main .block-container {
         padding: 2rem 2rem;
     }
 
     /* Custom Banner */
     .banner {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(120deg, #00bcd4 10%, #8e24aa 90%);
         padding: 2.5rem 2rem;
-        border-radius: 20px;
-        margin-bottom: 2rem;
-        box-shadow: 0 10px 30px -10px rgba(102, 126, 234, 0.5);
+        border-radius: 24px;
+        margin-bottom: 2.5rem;
+        box-shadow: 0 10px 32px -8px rgba(0, 188, 212, 0.15), 0 1.5px 9px #8e24aa44;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
     }
     .banner h1 {
         color: white;
-        font-size: 3.2rem;
-        font-weight: 700;
+        font-size: 3rem;
+        font-weight: 800;
         margin-bottom: 0.5rem;
+        letter-spacing: 1px;
+        text-shadow: 0px 2px 8px #8e24aa66;
     }
     .banner p {
         color: #e0e7ff;
         font-size: 1.4rem;
+        font-weight: 400;
+        margin-top: 0;
+        text-shadow: 0px 0.5px 8px #00bcd444;
     }
 
     /* Form Container */
     .form-container {
-        background-color: rgba(255, 255, 255, 0.9);
-        border-radius: 20px;
+        background-color: rgba(255,255,255,0.96);
+        border-radius: 22px;
         padding: 2.5rem;
-        box-shadow: 0 8px 25px rgba(0,0,0,0.05);
-        border: 1px solid rgba(0,0,0,0.08);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+        border: 1px solid #ede7f6;
+        margin-bottom: 2rem;
     }
 
-    /* Generated Email & Suggestions Card */
+    /* Generated Email & Suggestions Flex Card */
     .result-card {
-        background-color: #ffffff;
-        border-radius: 20px;
+        background-color: #fff;
+        border-radius: 22px;
         padding: 2rem;
         margin-top: 2rem;
         border: 1px solid #e0e0e0;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+        box-shadow: 0 6px 18px rgba(0,0,0,0.09);
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
     }
     .result-card h3 {
-        color: #333;
-        border-bottom: 2px solid #667eea;
+        color: #512da8;
+        border-bottom: 2px solid #00bcd4;
         padding-bottom: 0.5rem;
         margin-bottom: 1rem;
+        font-size: 1.28rem;
+        font-weight: 700;
+    }
+    .email-flex {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        min-height: 200px;
+        max-height: 60vh;
+        overflow-y: auto;
+        background: #f6f9ff;
+        border-radius: 13px;
+        font-size: 1.08rem;
+        padding: 1.2rem 1rem;
+        color: #333;
+        margin-bottom: 1rem;
+        box-shadow: 0 2px 8px #e3e3e3;
+        word-break: break-word;
+        white-space: pre-wrap;
     }
 
     /* Expander styling */
     .stExpander {
-        border-radius: 15px !important;
-        border: 1px solid #ddd !important;
-        background-color: #fafafa;
+        border-radius: 16px !important;
+        border: 1px solid #d1c4e9 !important;
+        background-color: #f7f6fc;
     }
     .stExpander header {
-        font-size: 1.1rem;
+        font-size: 1.09rem;
         font-weight: 600;
     }
 
     /* Button Styling */
     .stButton>button {
-        border-radius: 12px;
+        border-radius: 14px;
         padding: 0.75rem 1.5rem;
         font-weight: 600;
         border: none;
         color: white;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px -5px rgba(102, 126, 234, 0.6);
+        background: linear-gradient(120deg, #00bcd4 0%, #8e24aa 100%);
+        transition: all 0.2s ease;
+        box-shadow: 0 4px 15px -5px #00bcd488;
+        font-size: 1.06rem;
+        margin-bottom: 0.5rem;
     }
     .stButton>button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px -5px rgba(102, 126, 234, 0.8);
+        transform: translateY(-2px) scale(1.03);
+        box-shadow: 0 7px 24px -6px #8e24aa88;
+        background: linear-gradient(120deg, #8e24aa 0%, #00bcd4 100%);
     }
     .stButton>button:active {
         transform: translateY(0);
-        box-shadow: 0 4px 15px -5px rgba(102, 126, 234, 0.6);
+        box-shadow: 0 4px 15px -5px #00bcd488;
+    }
+
+    /* Copy to Clipboard Button */
+    .copy-btn {
+        background: linear-gradient(90deg, #66bb6a 0%, #43a047 100%);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 0.6rem 1.3rem;
+        font-size: 1rem;
+        font-weight: 600;
+        margin-top: 0.75rem;
+        margin-bottom: 0.5rem;
+        cursor: pointer;
+        box-shadow: 0 2px 8px #66bb6a33;
+        transition: all 0.17s ease;
+    }
+    .copy-btn:hover {
+        background: linear-gradient(90deg, #43a047 0%, #66bb6a 100%);
+        box-shadow: 0 4px 16px #43a04733;
+        transform: scale(1.04);
     }
 
     /* Footer */
     .footer {
         text-align: center;
         color: #888;
-        font-size: 0.9rem;
+        font-size: 0.97rem;
         margin-top: 3rem;
-        padding-bottom: 1rem;
+        padding-bottom: 1.5rem;
+        letter-spacing: 0.02em;
     }
 </style>
 """, unsafe_allow_html=True)
-
 
 # --- BANNER ---
 st.markdown(
@@ -120,7 +178,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
 
 # --- INITIALIZATION LOGIC (No changes) ---
 @st.cache_resource
@@ -146,7 +203,6 @@ else:
     st.session_state.connection_tested = False
     st.session_state.connection_ok = False
 
-
 # --- CONNECTION STATUS (No changes) ---
 if "connection_tested" in st.session_state:
     if st.session_state.connection_ok:
@@ -159,7 +215,6 @@ if "connection_tested" in st.session_state:
                 st.session_state.connection_ok = connection_ok
                 st.session_state.connection_message = message
                 st.rerun()
-
 
 # --- FORM SECTION ---
 st.markdown('<div class="form-container">', unsafe_allow_html=True)
@@ -182,7 +237,6 @@ with st.form("email_form"):
     generate_button = st.form_submit_button("Generate Email")
 st.markdown('</div>', unsafe_allow_html=True)
 
-
 # --- FORM SUBMISSION LOGIC (No changes) ---
 if generate_button:
     if not recipient or not sender or not key_points:
@@ -190,42 +244,41 @@ if generate_button:
     else:
         with st.spinner("Generating your email..."):
             try:
-                email_content = st.session_state.generator.generate_email(
+                email_text = st.session_state.generator.generate_email(
                     key_points=key_points, recipient=recipient, sender=sender,
                     purpose=purpose, tone=tone, length=length
                 )
-                
-                # Using session state to persist results
-                st.session_state.email_content = email_content
+                st.session_state.email_text = email_text
                 st.session_state.suggestions = None # Reset suggestions
-                
             except Exception as e:
                 st.error(f"Error during email generation: {str(e)}")
 
 # --- DISPLAY RESULTS ---
-if "email_content" in st.session_state and st.session_state.email_content:
+if "email_text" in st.session_state and st.session_state.email_text:
     st.markdown('<div class="result-card">', unsafe_allow_html=True)
-    st.subheader("Generated Email")
-    st.code(st.session_state.email_content, language="")
-    
+    st.markdown('<h3>Generated Email</h3>', unsafe_allow_html=True)
+    st.markdown(f'<div class="email-flex" id="emailToCopy">{st.session_state.email_text}</div>', unsafe_allow_html=True)
+    # Copy to Clipboard Button (uses JS directly)
     col1, col2 = st.columns(2)
     with col1:
-        if st.button("Copy to Clipboard"):
-            st.code(st.session_state.email_content)
-            st.success("Select the text above and press Ctrl+C/Cmd+C to copy.")
+        st.markdown("""
+        <button class="copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('emailToCopy').innerText);document.getElementById('copiedMsg').style.display='block';setTimeout(function(){document.getElementById('copiedMsg').style.display='none';},1500);">
+            📋 Copy to Clipboard
+        </button>
+        <span id="copiedMsg" style="display:none; color:#43a047; font-weight:600; margin-left:10px;">Copied!</span>
+        """, unsafe_allow_html=True)
     with col2:
         if st.button("Improve This Email"):
             with st.spinner("Analyzing and suggesting improvements..."):
-                suggestions = st.session_state.generator.improve_email(st.session_state.email_content)
+                suggestions = st.session_state.generator.improve_email(st.session_state.email_text)
                 st.session_state.suggestions = suggestions
     st.markdown('</div>', unsafe_allow_html=True)
 
 if "suggestions" in st.session_state and st.session_state.suggestions:
     st.markdown('<div class="result-card">', unsafe_allow_html=True)
-    st.subheader("Suggested Improvements")
+    st.markdown('<h3>Suggested Improvements</h3>', unsafe_allow_html=True)
     st.write(st.session_state.suggestions)
     st.markdown('</div>', unsafe_allow_html=True)
-
 
 # --- EXPANDABLE SECTIONS (No changes in logic) ---
 with st.expander("Need inspiration? Try a template"):
@@ -263,7 +316,6 @@ with st.expander("Contact the Owner | Feedback & Suggestions"):
            <b>Email:</b> <a href="mailto:khushbu.sharma7105@gmail.com">khushbu.sharma7105@gmail.com</a></p>
         <p>We welcome your feedback and suggestions! Please feel free to reach out with any issues, feature requests, or ideas.</p>
     """, unsafe_allow_html=True)
-
 
 # --- FOOTER ---
 st.markdown(f"""
