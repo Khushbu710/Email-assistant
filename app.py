@@ -143,7 +143,7 @@ if generate_button:
                 with col2:
                     if st.button("Improve This Email"):
                         with st.spinner("Analyzing and improving email..."):
-                            suggestions = st.session_state.generator.improve_email(email_content)
+                            suggestions = st.session_state.generator.improve_email(email_text)
                             st.subheader("Suggested Improvements")
                             st.write(suggestions)
                 
