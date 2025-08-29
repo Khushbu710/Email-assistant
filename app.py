@@ -261,12 +261,7 @@ if "email_text" in st.session_state and st.session_state.email_text:
     # Copy to Clipboard Button (uses JS directly)
     col1, col2 = st.columns(2)
     with col1:
-        st.markdown("""
-        <button class="copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('emailToCopy').innerText);document.getElementById('copiedMsg').style.display='block';setTimeout(function(){document.getElementById('copiedMsg').style.display='none';},1500);">
-            📋 Copy to Clipboard
-        </button>
-        <span id="copiedMsg" style="display:none; color:#43a047; font-weight:600; margin-left:10px;">Copied!</span>
-        """, unsafe_allow_html=True)
+        st.code(st.session_state.email_text, language="", line_numbers=False)  # Has native copy button
     with col2:
         if st.button("Improve This Email"):
             with st.spinner("Analyzing and suggesting improvements..."):
