@@ -51,7 +51,7 @@ class EmailGenerator:
         else: # Long
             max_tokens = 500
 
-        system_prompt = "You are a helpful assistant that writes professional emails. Generate only the email content based on the user's request, starting with a subject line."
+        system_prompt = "You are a helpful assistant that writes professional emails. Generate only the email content based on the user's request, starting with a subject line. Do not end mid sentence. Finish the mail with the final sender's credentials based on the tone of the mail."
 
         user_prompt = f"""
         Write a {tone} email from {sender} to {recipient} about {purpose}.
