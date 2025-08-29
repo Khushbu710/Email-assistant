@@ -232,8 +232,13 @@ with st.form("email_form"):
         length_options = ["Short", "Medium", "Long"]
         length = st.selectbox("Length", length_options)
     
-    key_points = st.text_area("Key Points to Include", height=150, placeholder="Enter the main points, requests, or questions for your email...")
-    
+    # key_points = st.text_area("Key Points to Include", height=150, placeholder="Enter the main points, requests, or questions for your email...")
+    key_points = st.text_area(
+        "Key Points to Include",
+        height=150,
+        value=st.session_state.get("key_points_template", ""),  # <-- Use the template if present
+        placeholder="Enter the main points you want to include in your email..."
+    )
     generate_button = st.form_submit_button("Generate Email")
 st.markdown('</div>', unsafe_allow_html=True)
 
