@@ -17,7 +17,7 @@ class EmailGenerator:
         
         try:
             self.client = Groq(api_key=self.api_key)
-            self.model_name = "llama3-8b-8192" # Using Llama 3 via Groq
+            self.model_name = "llama-3.1-8b-instant" # Using Llama 3 via Groq
             logging.info("Groq client configured successfully.")
         except Exception as e:
             raise RuntimeError(f"Failed to configure Groq client: {e}")
