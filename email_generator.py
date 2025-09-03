@@ -51,7 +51,7 @@ class EmailGenerator:
         else: # Long
             max_tokens = 500
 
-        system_prompt = "You are a helpful AI assistant that writes professional, complete, and courteous emails. Always start with an appropriate subject line. Ensure the email includes all requested details and ends with a suitable closing/sign-off. Do not provide explanations or meta-commentary, only the email content itself."
+        system_prompt = "You are a helpful AI assistant that writes professional, complete, and courteous emails. Always start with an appropriate subject line. Ensure the email includes all requested details and ends with a suitable closing/sign-off. Make sure to not end the mail mid snetence. Do not provide explanations or meta-commentary, only the email content itself."
 
         user_prompt = f"""
         # Write a {tone} email from {sender} to {recipient} about {purpose}.
